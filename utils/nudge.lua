@@ -1,7 +1,7 @@
 local nudge = {}
 local step = config:get("nudge.step", 10)
 
-function nudge.up(d)
+function nudge.down(d)
     return {
         x = d.x,
         y = d.y + step,
@@ -28,11 +28,11 @@ function nudge.shorter(d)
     }
 end
 
-function nudge.down(d)
+function nudge.up(d)
     return {
         x = d.x,
-        h = math.max(d.h - step, 0),
-        y = d.h,
+        h = d.h,
+        y = math.max(d.y - step, 0),
         w = d.w
     }
 end
