@@ -6,8 +6,8 @@ local nudge = import('utils/nudge')
 local function module_init()
     local mash = config:get("slide.mash", { "cmd", "ctrl", "alt" })
     local keys = config:get("slide.keys", {
-        UP = "shorter",
-        DOWN = "taller",
+        UP = "taller",
+        DOWN = "shorter",
         LEFT = "narrower",
         RIGHT = "wider",
     })
