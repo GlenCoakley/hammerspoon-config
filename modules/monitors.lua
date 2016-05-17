@@ -9,9 +9,10 @@ local monitors = import('utils/monitors')
 local function init_module()
     for id, monitor in pairs(monitors.configured_monitors) do
 
+--[[
         hotkey.bind({ "cmd", "ctrl" }, "PAD" .. id, function()
             local midpoint = geometry.rectMidPoint(monitor.dimensions)
-            mouse.set(midpoint)
+            mouse.setRelativePosition(midpoint)
         end)
 
         hotkey.bind({ "cmd", "ctrl", "alt" }, "PAD" .. id, function()
@@ -34,6 +35,8 @@ local function init_module()
                 win:setFrame(position.right(monitor.dimensions))
             end
         end)
+--]]
+
         hotkey.bind({ "shift", "ctrl", "alt" }, "PAD" .. id, function()
             local win = window.focusedWindow()
             if win ~= nil then
