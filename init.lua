@@ -42,5 +42,12 @@ table.insert(buf, #modules .. " modules.")
 
 alert.show(table.concat(buf))
 
+-------------------------------------------------
+-- Glen's additional configuration
+-------------------------------------------------
 
+--spaces = require("hs._asm.undocumented.spaces")
 
+--[[ print all key codes
+for key,value in pairs(require 'hs.keycodes'.map) do print(key,value) end
+--]]
