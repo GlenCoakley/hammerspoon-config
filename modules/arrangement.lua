@@ -102,12 +102,13 @@ local function init_module()
         end
 
         if arrangement.key ~= nil then
-            hotkey.bind(arrangement.mash or { "cmd", "ctrl", "alt" }, arrangement.key, fnutils.partial(handle_arrangement, arrangement))
+            hotkey.bind(arrangement.mash or shift_hyper,
+                        arrangement.key, fnutils.partial(handle_arrangement, arrangement))
         end
     end
 
     if config:get('arrangements.fuzzy_search', false) then
-        local mash = config:get('arrangements.fuzzy_search.mash', {"ctrl", "alt", "cmd"})
+        local mash = config:get('arrangements.fuzzy_search.mash', shift_hyper)
         local key = config:get('arrangements.fuzzy_search.key', "F")
 
         local match_dialogue = import('utils/match_dialogue')

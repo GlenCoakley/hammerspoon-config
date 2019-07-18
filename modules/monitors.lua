@@ -37,7 +37,7 @@ local function init_module()
         end)
 --]]
 
-        hotkey.bind({ "shift", "ctrl", "alt" }, "PAD" .. id, function()
+        hotkey.bind(shift_hyper, "PAD" .. id, function()
             local win = window.focusedWindow()
             if win ~= nil then
                 win:setFrame(monitor.dimensions:relative_window_position(win))

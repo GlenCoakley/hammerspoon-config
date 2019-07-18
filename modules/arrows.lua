@@ -5,18 +5,18 @@ local position = import('utils/position')
 local monitors = import('utils/monitors')
 
 local function module_init()
-    local mash = config:get("arrows.mash", { "cmd", "ctrl", "alt" })
+    local mash = config:get("arrows.mash", shift_hyper)
     local keys = config:get("arrows.keys", {
         UP = "top",
         DOWN = "bottom",
         LEFT = "left",
         RIGHT = "right",
-        SPACE = "full",
-        PAD7 = "top_left",
-        PAD8 = "middle_third",
-        PAD9 = "top_right",
-        PAD3 = "bottom_right",
-        PAD1 = "bottom_left"
+        -- SPACE = "full",
+        -- PAD7 = "top_left",
+        -- PAD8 = "middle_third",
+        -- PAD9 = "top_right",
+        -- PAD1 = "bottom_left",
+        PAD3 = "bottom_right"
     })
 
     for key, position_string in pairs(keys) do

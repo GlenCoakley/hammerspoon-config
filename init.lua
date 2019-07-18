@@ -1,3 +1,4 @@
+
 local alert = require 'hs.alert'
 
 import = require('utils/import')
@@ -15,6 +16,8 @@ function config:get(key_path, default)
     end
     return root
 end
+
+hs.application.enableSpotlightForNameSearches(true)
 
 local modules = {}
 
@@ -45,6 +48,8 @@ alert.show(table.concat(buf))
 -------------------------------------------------
 -- Glen's additional configuration
 -------------------------------------------------
+
+import('glensSpoons')
 
 --spaces = require("hs._asm.undocumented.spaces")
 

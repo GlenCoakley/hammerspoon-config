@@ -2,6 +2,7 @@ local hotkey = require 'hs.hotkey'
 
 return {
     init = function()
-        hotkey.bind(config:get("repl.mash", { "cmd", "ctrl", "alt" }), config:get("repl.key", "R"), hs.openConsole)
+        hotkey.bind(config:get("repl.mash", shift_hyper),
+        config:get("repl.key", "I"), hs.openConsole)
     end
 }
