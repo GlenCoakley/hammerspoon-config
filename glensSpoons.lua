@@ -56,6 +56,10 @@ Install:andUse("WindowScreenLeftAndRight",
 --              }
 --)
 
+-- Route URLs to different applications with pattern matching.
+
+Install:andUse("URLDispatcher", {})
+
 -- The EvernoteOpenAndTag spoon sets up some missing key bindings for note manipulation in Evernote.
 
 --Install:andUse("EvernoteOpenAndTag",
@@ -80,6 +84,10 @@ Install:andUse("WindowScreenLeftAndRight",
 --                 hotkeys = {
 --                   toggle = { hyper, "/" }
 --}})
+
+-- Windows manipulation.
+
+Install:andUse("WinWin", {})
 
 -- ########## Network transitions ##########
 
