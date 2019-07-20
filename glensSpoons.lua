@@ -20,13 +20,31 @@ Install.use_syncinstall = true
 
 
 -- The WindowHalfsAndThirds spoon sets up multiple key bindings for manipulating the size and position of windows.
-
+windowChord = {"alt", "cmd"}
 Install:andUse("WindowHalfsAndThirds",
                {
                  config = {
                    use_frame_correctness = true
                  },
-                 hotkeys = 'default'
+                 hotkeys = {
+   left_half    = { windowChord, "Left" },
+   right_half   = { windowChord, "Right" },
+   top_half     = { windowChord, "Up" },
+   bottom_half  = { windowChord, "Down" },
+   top_left     = { windowChord, "1" },
+   top_right    = { windowChord, "2" },
+   bottom_left  = { windowChord, "3" },
+   bottom_right = { windowChord, "4" },
+   max_toggle   = { windowChord, "f" },
+   undo         = { windowChord, "z" },
+   center       = { windowChord, "c" },
+   third_left   = { {"ctrl", "alt"       }, "Left" },
+   third_right  = { {"ctrl", "alt"       }, "Right" },
+   third_up     = { {"ctrl", "alt"       }, "Up" },
+   third_down   = { {"ctrl", "alt"       }, "Down" },
+   larger       = { {        "alt", "cmd", "shift"}, "Right" },
+   smaller      = { {        "alt", "cmd", "shift"}, "Left" },
+}
                }
 )
 
