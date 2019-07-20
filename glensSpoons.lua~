@@ -2,6 +2,10 @@
 -- Global log level. Per-spoon log level can be configured in each Install:andUse block below.
 hs.logger.defaultLogLevel = "info"
 
+-- I use hyper and shift_hyper as the modifiers for most of my key bindings,
+-- so I define them as variables here for easier referencing.
+hyper = {"cmd","alt","ctrl"}
+
 hs.loadSpoon("SpoonInstall")
 
 -- This is just a shortcut to make the declarations below look more readable,

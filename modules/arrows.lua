@@ -5,7 +5,7 @@ local position = import('utils/position')
 local monitors = import('utils/monitors')
 
 local function module_init()
-    local mash = config:get("arrows.mash", shift_hyper)
+    local mash = config:get("arrows.mash", hyper_shift)
     local keys = config:get("arrows.keys", {
         UP = "top",
         DOWN = "bottom",

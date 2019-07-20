@@ -1,5 +1,7 @@
 local config = {}
-shift_hyper = { "ctrl", "alt", "cmd", "shift" }
+hyper = { "ctrl", "alt", "cmd" }
+hyper_ambi = { "alt", "cmd", "shift" }
+hyper_shift = { "ctrl", "alt", "cmd", "shift" }
 
 config.modules = {
     "arrangement",
@@ -20,13 +22,13 @@ config.monitors = {
 -- Window arrangements.
 config.arrangements = {
     fuzzy_search = {
-        mash = shift_hyper,
+        mash = hyper_shift,
         key = "Z"
     },
     {
         name = "zen",
         alert = true,
-        mash = shift_hyper,
+        mash = hyper_shift,
         key = "A",
         arrangement = {
             {

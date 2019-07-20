@@ -2,7 +2,7 @@ local hotkey = require 'hs.hotkey'
 local window = require 'hs.window'
 
 local function module_init()
-    local mash = config:get("hop.mash", shift_hyper)
+    local mash = config:get("hop.mash", hyper_shift)
     local keys = config:get("hop.keys", {
         UP = "north",
         DOWN = "south",

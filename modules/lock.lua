@@ -8,7 +8,7 @@ local function module_init()
         os.execute("/System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend")
     end)
 
-    mash = config:get("lock.mash", shift_hyper)
+    mash = config:get("lock.mash", hyper_shift)
     key = config:get("lock.key", "S")
 
     hotkey.bind(mash, key, function()
