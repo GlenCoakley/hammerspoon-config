@@ -1,16 +1,23 @@
 local config = {}
 hyper = { "ctrl", "alt", "cmd" }
-hyper_ambi = { "alt", "cmd", "shift" }
-hyper_shift = { "ctrl", "alt", "cmd", "shift" }
+hyper_both = { "alt", "cmd", "shift" }
+hyper_left = { "ctrl", "alt", "shift" }
+hyper_all = { "ctrl", "alt", "cmd", "shift" }
 
 config.modules = {
+    -- "app_selector",
     "arrangement",
-    "monitors",
-    -- "repl",
-    "reload",
     "arrows",
-    "lock"
-    -- "fullscreen"
+	-- "auto_reload",
+	-- "fullscreen",
+	-- "hop",
+	"lock",
+    "monitors",
+    "reload",
+    -- "repl",
+	-- "slide",
+	-- "test",
+	"volume"
 }
 
 -- Maps monitor id -> screen index.
@@ -22,13 +29,13 @@ config.monitors = {
 -- Window arrangements.
 config.arrangements = {
     fuzzy_search = {
-        mash = hyper_shift,
+        mash = hyper,
         key = "Z"
     },
     {
         name = "zen",
         alert = true,
-        mash = hyper_shift,
+        mash = hyper,
         key = "A",
         arrangement = {
             {
@@ -37,35 +44,16 @@ config.arrangements = {
                 position = "full_screen",
             },
             {
-                app_title = "^Slack",
-                monitor = 4,
-                position = "left"
-            },
-            {
                 app_title = "^Messages",
-                monitor = 4,
+                monitor = 2,
                 position = function(d)
                     return d:translate_from('bottom_right', {
                         y = 42,
                         h = -40
                     })
                 end
-            },
-            {
-                app_title = "^ChronoMate",
-                monitor = 4,
-                position = function(d)
-                    return d:translate_from('top_right', {
-                        h = 42
-                    })
-                end
-            },
-            {
-                app_title = "^Spotify",
-                monitor = 6,
-                position = "full_screen",
             }
-        }
+		}
     }
 }
 

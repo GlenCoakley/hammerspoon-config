@@ -1,14 +1,14 @@
 local hotkey = require 'hs.hotkey'
 
 local function module_init()
-    local mash = config:get("lock.mash", { "cmd", "alt" })
+    local mash = config:get("lock.mash", hyper)
     local key = config:get("lock.key", "L")
 
     hotkey.bind(mash, key, function()
         os.execute("/System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend")
     end)
 
-    mash = config:get("lock.mash", hyper_shift)
+    mash = config:get("lock.mash", hyper)
     key = config:get("lock.key", "S")
 
     hotkey.bind(mash, key, function()

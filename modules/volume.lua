@@ -3,6 +3,7 @@ local function module_init()
 
   function changeVolume(diff)
     return function()
+		print("Volume change requested: ", diff)
       local current = hs.audiodevice.defaultOutputDevice():volume()
       local new = math.min(100, math.max(0, math.floor(current + diff)))
 
@@ -15,8 +16,8 @@ local function module_init()
     end
   end
 
-  hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Down', changeVolume(-3))
-  hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Up', changeVolume(3))
+  hs.hotkey.bind(hyper, 'Down', changeVolume(-2))
+  hs.hotkey.bind(hyper, 'Up', changeVolume(2))
 end
 
 return {

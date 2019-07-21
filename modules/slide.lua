@@ -4,7 +4,7 @@ local window = require 'hs.window'
 local nudge = import('utils/nudge')
 
 local function module_init()
-    local mash = config:get("slide.mash", hyper_shift)
+    local mash = config:get("slide.mash", hyper_all)
     local keys = config:get("slide.keys", {
         UP = "shorter",
         DOWN = "taller",
