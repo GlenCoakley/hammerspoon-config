@@ -2,7 +2,7 @@ local hotkey = require 'hs.hotkey'
 local window = require 'hs.window'
 
 local function module_init()
-    local mash = config:get('fullscreen.mash', { "cmd", "ctrl" })
+    local mash = config:get('fullscreen.mash', hyper)
     local key = config:get('fullscreen.key', "S")
 
     hotkey.bind(mash, key, function()

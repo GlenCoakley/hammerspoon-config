@@ -5,19 +5,22 @@ hyper_left = { "ctrl", "alt", "shift" }
 hyper_all = { "ctrl", "alt", "cmd", "shift" }
 
 config.modules = {
-    -- "app_selector",
-    "arrangement",
+    "app_selector",
+    "applications",
+	"arrangement",
     "arrows",
 	-- "auto_reload",
 	-- "fullscreen",
+	"hwsw_changes", 
 	-- "hop",
-	"lock",
+	"key_bindings",
     "monitors",
     "reload",
     -- "repl",
-	-- "slide",
-	-- "test",
-	"volume"
+	"screen_lock",
+	-- "slide_windows",
+	"volume",
+	-- "test" -- Keep this last so, breaks as little as possible.
 }
 
 -- Maps monitor id -> screen index.

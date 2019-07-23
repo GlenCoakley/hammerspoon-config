@@ -14,6 +14,7 @@ Install.use_syncinstall = true
 
 -- ########## Window and screen manipulation ##########
 
+-- Could also just use the build-in 'layout' and/or 'grid' with their snap-to sizing, nudging, shrinking and expanding: https://www.hammerspoon.org/docs/hs.grid.html#setGrid
 
 -- The WindowHalfsAndThirds spoon sets up multiple key bindings for manipulating the size and position of windows.
 windowChord = {"alt", "cmd"}
@@ -31,9 +32,9 @@ Install:andUse("WindowHalfsAndThirds",
    top_right    = { windowChord, "2" },
    bottom_left  = { windowChord, "3" },
    bottom_right = { windowChord, "4" },
-   max_toggle   = { windowChord, "f" },
-   undo         = { windowChord, "z" },
-   center       = { windowChord, "c" },
+   max_toggle   = { hyper, "f" },
+   undo         = { hyper, "z" },
+   center       = { hyper, "c" },
    third_left   = { {"ctrl", "alt"       }, "Left" },
    third_right  = { {"ctrl", "alt"       }, "Right" },
    third_up     = { {"ctrl", "alt"       }, "Up" },

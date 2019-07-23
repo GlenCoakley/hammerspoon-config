@@ -33,7 +33,7 @@ local function module_init()
 
     local matcher = match_dialgoue(match_data_source, match_selected)
 
-    hotkey.bind(config:get('app_selector.mash', { "ctrl", "shift" }),
+    hotkey.bind(config:get('app_selector.mash', { "alts", "shift" }),
                 config:get('app_selector.key', "tab"), function()
         matcher:show()
     end)

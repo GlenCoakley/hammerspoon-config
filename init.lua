@@ -1,4 +1,9 @@
 
+-- Hammerspoon home: http://www.hammerspoon.org/go/
+-- LUA quick refernce / cheat sheet: https://devhints.io/lua
+-- LUA lanugage reference manual: https://www.lua.org/ftp/refman-5.0.pdf
+
+hs.console.clearConsole()
 local alert = require 'hs.alert'
 
 import = require('utils/import')
@@ -23,9 +28,10 @@ local modules = {}
 
 for _, v in ipairs(config.modules) do
     local module_name = 'modules/' .. v
+	print('Importing ', module_name)
     local module = import(module_name)
 
-    if type(module.init) == "function" then
+    if module and type(module.init) == "function" then
         module.init()
     end
 
