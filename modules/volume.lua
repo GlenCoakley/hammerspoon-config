@@ -16,8 +16,8 @@ local function module_init()
     end
   end
 
-  hs.hotkey.bind(hyper, 'Down', changeVolume(-2))
-  hs.hotkey.bind(hyper, 'Up', changeVolume(2))
+  hs.hotkey.bind(hyper, 'Down', changeVolume(-1))
+  hs.hotkey.bind(hyper, 'Up', changeVolume(1))
 end
 
 return {

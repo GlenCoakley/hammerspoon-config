@@ -1,16 +1,17 @@
 local config = {}
 hyper = { "ctrl", "alt", "cmd" }
-hyper_both = { "alt", "cmd", "shift" }
 hyper_left = { "ctrl", "alt", "shift" }
+hyper_right = { "alt", "cmd", "shift" }
+hyper_split = { "ctrl", "cmd", "shift" }
 hyper_all = { "ctrl", "alt", "cmd", "shift" }
 
 config.modules = {
-    "app_selector",
+    -- "app_selector",
     "applications",
 	"arrangement",
-    "arrows",
-	-- "auto_reload",
-	-- "fullscreen",
+    -- Handled by WindowHalfsAndThirds <- "arrows",
+	-- "auto_reload_hammerspoon",
+	"maximized",
 	"hwsw_changes", 
 	-- "hop",
 	"key_bindings",
@@ -33,7 +34,7 @@ config.monitors = {
 config.arrangements = {
     fuzzy_search = {
         mash = hyper,
-        key = "Z"
+        key = "f"
     },
     {
         name = "zen",

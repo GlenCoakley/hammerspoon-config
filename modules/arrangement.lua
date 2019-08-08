@@ -108,7 +108,7 @@ local function init_module()
     end
 
     if config:get('arrangements.fuzzy_search', false) then
-        local mash = config:get('arrangements.fuzzy_search.mash', hyper_all)
+        local mash = config:get('arrangements.fuzzy_search.mash', hyper_left)
         local key = config:get('arrangements.fuzzy_search.key', "F")
 
         local match_dialogue = import('utils/match_dialogue')

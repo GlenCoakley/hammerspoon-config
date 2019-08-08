@@ -17,7 +17,7 @@ Install.use_syncinstall = true
 -- Could also just use the build-in 'layout' and/or 'grid' with their snap-to sizing, nudging, shrinking and expanding: https://www.hammerspoon.org/docs/hs.grid.html#setGrid
 
 -- The WindowHalfsAndThirds spoon sets up multiple key bindings for manipulating the size and position of windows.
-windowChord = {"alt", "cmd"}
+windowChord = {"ctrl", "alt", "cmd"}
 Install:andUse("WindowHalfsAndThirds",
                {
                  config = {
@@ -26,21 +26,24 @@ Install:andUse("WindowHalfsAndThirds",
                  hotkeys = {
    left_half    = { windowChord, "Left" },
    right_half   = { windowChord, "Right" },
-   top_half     = { windowChord, "Up" },
-   bottom_half  = { windowChord, "Down" },
+   top_60     	= { windowChord, "Up" },
+   bottom_60  	= { windowChord, "Down" },
    top_left     = { windowChord, "1" },
    top_right    = { windowChord, "2" },
    bottom_left  = { windowChord, "3" },
    bottom_right = { windowChord, "4" },
-   max_toggle   = { hyper, "f" },
+   max_toggle   = { hyper, "m" },
    undo         = { hyper, "z" },
    center       = { hyper, "c" },
-   third_left   = { {"ctrl", "alt"       }, "Left" },
-   third_right  = { {"ctrl", "alt"       }, "Right" },
-   third_up     = { {"ctrl", "alt"       }, "Up" },
-   third_down   = { {"ctrl", "alt"       }, "Down" },
-   larger       = { {        "alt", "cmd", "shift"}, "Right" },
-   smaller      = { {        "alt", "cmd", "shift"}, "Left" },
+   larger       = { hyper_right, "Right" },
+   smaller      = { hyper_right, "Left" },
+   -- Disable the following
+   top_half    	= { {}, "F18" },
+   bottom_half 	= { {}, "F18" },
+   third_left   = { {}, "F18" },
+   third_right  = { {}, "F18" },
+   third_up     = { {}, "F18" },
+   third_down   = { {}, "F18" },
 }
                }
 )
