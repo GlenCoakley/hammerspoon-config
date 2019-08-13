@@ -1,6 +1,7 @@
 
 -- Credit to: https://github.com/jasonrudolph/keyboard/tree/master/hammerspoon
--- Key reference: https://www.hammerspoon.org/docs/hs.utf8.html#registeredKeys
+-- Key reference: https://www.hammerspoon.org/docs/hs.keycodes.html#map
+--  and https://www.hammerspoon.org/docs/hs.utf8.html#registeredKeys
 --local base64 = import('utils/base64')
 local log = hs.logger.new('key_bindings.lua', 'debug')
 
@@ -19,6 +20,18 @@ end
 hs.hotkey.bind({'shift'}, 'delete', function()
 	keyUpDown({}, 'forwardDelete') --hs.utf8.codepointToUTF8(0x2326))
 end)
+-- hs.hotkey.bind({'cmd'}, 'left', function()
+-- 	keyUpDown({}, 'leftWord') --hs.utf8.codepointToUTF8(0x2326))
+-- end)
+-- hs.hotkey.bind({'cmd'}, 'right', function()
+-- 	keyUpDown({}, 'rightWord') --hs.utf8.codepointToUTF8(0x2326))
+-- end)
+-- hs.hotkey.bind({'cmd'}, 'left', function()
+-- 	keyUpDown({}, 'leftWord') --hs.utf8.codepointToUTF8(0x2326))
+-- end)
+-- hs.hotkey.bind({'cmd'}, 'right', function()
+-- 	keyUpDown({}, 'rightWord') --hs.utf8.codepointToUTF8(0x2326))
+-- end)
 
 
 hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'd', function()
@@ -32,5 +45,7 @@ hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'g', function()
 end)
 
 hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'p', function()
-	hs.eventtap.keyStrokes(hs.base64.decode('')) -- put network password here.
+	local wnpw = import('utils/file_util').readWholeFile('/Users/glencoakley/.ssh/wnpw.b64')
+	wnpw = wnpw.trimBoth('\r\n')
+	hs.eventtap.keyStrokes(hs.base64.decode(winpw))
 end)

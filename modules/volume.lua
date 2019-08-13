@@ -3,9 +3,10 @@ local function module_init()
 
   function changeVolume(diff)
     return function()
-		print("Volume change requested: ", diff)
       local current = hs.audiodevice.defaultOutputDevice():volume()
-      local new = math.min(100, math.max(0, math.floor(current + diff)))
+      local newRaw = math.floor(current + diff + 0.5)
+      local new = math.min(100, math.max(0, newRaw))
+		  -- print("Current volume: ", current, ", change requested: ", diff, ", calculated: ", newRaw)
 
       if new > 0 then
         hs.audiodevice.defaultOutputDevice():setMuted(false)
