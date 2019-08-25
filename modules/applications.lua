@@ -1,7 +1,5 @@
 local message = require('utils.status_message')
 
-local msgCanUseTouchBar = message.new('You can also use the Touch Bar')
-
 local isInTerminal = function()
   app = hs.application.frontmostApplication():name()
   return app == 'iTerm2' or app == 'Terminal'
@@ -9,7 +7,8 @@ end
 
 
 local function module_init()
-	local mash, key
+	-- local msgCanUseTouchBar = message.new('You can also use the Touch Bar')
+	-- local mash, key
 
 	-- -- Replaced by screen_lock.lua > hs.caffeinate.lockScreen()	--
 	-- mash = config:get("lock.mash", hyper_left)
@@ -22,7 +21,7 @@ local function module_init()
 	-- mash = config:get("lock.mash", hyper_left)
 	-- key = config:get("lock.key", "S")
 	-- hs.hotkey.bind(mash, key, function()
-	-- 	msgCanUseTouchBar:notify(2)
+	-- 	msgCanUseTouchBar:notify(1)
 	--     hs.caffeinate.systemSleep()
 	-- 	--os.execute("/usr/bin/pmset sleepnow")
 	-- end)

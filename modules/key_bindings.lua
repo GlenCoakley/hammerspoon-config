@@ -13,9 +13,9 @@ keyUpDown = function(modifiers, key)
   hs.eventtap.keyStroke(modifiers, key, 0)
 end
 
--- hs.hotkey.bind({'alt'}, 'space', function()
--- 	keyUpDown({}, 'menu') --hs.utf8.codepointToUTF8(0x2326))
--- end)
+hs.hotkey.bind({'alt', 'shift'}, 'space', function()
+	keyUpDown({}, 'menu') --hs.utf8.codepointToUTF8(0x2326))
+end)
 
 hs.hotkey.bind({'shift'}, 'delete', function()
 	keyUpDown({}, 'forwardDelete') --hs.utf8.codepointToUTF8(0x2326))
@@ -44,8 +44,15 @@ hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'g', function()
 	hs.eventtap.keyStrokes('gcoakley@datarecognitioncorp.com')
 end)
 
+function trimWhitespaceFromBoth(s)
+   return s:match "^%s*(.-)%s*$"
+end
+
 hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'p', function()
-	local wnpw = import('utils/file_util').readWholeFile('/Users/glencoakley/.ssh/wnpw.b64')
-	wnpw = wnpw.trimBoth('\r\n')
-	hs.eventtap.keyStrokes(hs.base64.decode(winpw))
+	local FileUtil = import('utils/file_util')
+	local wnpw = FileUtil.readWholeFile('/Users/glencoakley/.ssh/wnpw.b64')
+	log.d('Read from file ->', wnpw)
+	wnpw = hs.base64.decode(trimWhitespaceFromBoth(wnpw))
+	log.d('Decoded ->', wnpw)
+	hs.eventtap.keyStrokes(wnpw)
 end)

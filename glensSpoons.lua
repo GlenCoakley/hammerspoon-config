@@ -11,41 +11,43 @@ Install = spoon.SpoonInstall
 -- I prefer sync notifications, makes them easier to read.
 Install.use_syncinstall = true
 
+windowChord = {"ctrl", "alt", "cmd"}
+
 
 -- ########## Window and screen manipulation ##########
 
 -- Could also just use the build-in 'layout' and/or 'grid' with their snap-to sizing, nudging, shrinking and expanding: https://www.hammerspoon.org/docs/hs.grid.html#setGrid
 
 -- The WindowHalfsAndThirds spoon sets up multiple key bindings for manipulating the size and position of windows.
-windowChord = {"ctrl", "alt", "cmd"}
+
 Install:andUse("WindowHalfsAndThirds",
                {
                  config = {
                    use_frame_correctness = true
                  },
                  hotkeys = {
-   left_half    = { windowChord, "Left" },
-   right_half   = { windowChord, "Right" },
-   top_60     	= { windowChord, "Up" },
-   bottom_60  	= { windowChord, "Down" },
-   top_left     = { windowChord, "1" },
-   top_right    = { windowChord, "2" },
-   bottom_left  = { windowChord, "3" },
-   bottom_right = { windowChord, "4" },
-   max_toggle   = { hyper, "m" },
-   undo         = { hyper, "z" },
-   center       = { hyper, "c" },
-   larger       = { hyper_right, "Right" },
-   smaller      = { hyper_right, "Left" },
-   -- Disable the following
-   top_half    	= { {}, "F18" },
-   bottom_half 	= { {}, "F18" },
-   third_left   = { {}, "F18" },
-   third_right  = { {}, "F18" },
-   third_up     = { {}, "F18" },
-   third_down   = { {}, "F18" },
-}
-               }
+	   left_half    = { hyper_left, "j" },
+	   right_half   = { hyper_left, ";" },
+	   top_half     = { hyper_left, "u" },
+	   bottom_half  = { hyper_left, "n" },
+	   top_left     = { hyper_left, "i" },
+	   top_right    = { hyper_left, "o" },
+	   bottom_left  = { hyper_left, "k" },
+	   bottom_right = { hyper_left, "l" },
+	   max_toggle   = { hyper_left, "m" },
+	   undo         = { hyper_left, "z" },
+	   center       = { hyper_left, "," },
+	   larger       = { hyper_left, "6" },
+	   smaller      = { hyper_left, "v" },
+	   -- Disable the following. They can be achieved with the above keys.
+	   top_third   	= { {}, "F18" },
+	   bottom_third	= { {}, "F18" },
+	   third_left   = { {}, "F18" },
+	   third_right  = { {}, "F18" },
+	   third_up     = { {}, "F18" },
+	   third_down   = { {}, "F18" },
+	}
+  }
 )
 
 -- The WindowScreenLeftAndRight spoon sets up key bindings for moving windows between multiple screens.
@@ -55,6 +57,10 @@ Install:andUse("WindowScreenLeftAndRight",
                  hotkeys = 'default'
                }
 )
+
+-- Windows manipulation.
+
+Install:andUse("WinWin", {})
 
 
 -- ########## Organization and Productivity ##########
@@ -97,15 +103,13 @@ Install:andUse("URLDispatcher", {})
 -- The KSheet spoon traverses the current application’s menus and builds a cheatsheet of the keyboard shortcuts,
 -- showing it in a nice popup window.
 
---Install:andUse("KSheet",
---               {
---                 hotkeys = {
---                   toggle = { hyper, "/" }
---}})
-
--- Windows manipulation.
-
-Install:andUse("WinWin", {})
+Install:andUse("KSheet",
+              {
+                hotkeys = {
+                  toggle = { hyper, "/" }
+			  }
+		  }
+)
 
 -- ########## Network transitions ##########
 
@@ -176,7 +180,7 @@ Install:andUse("FadeLogo",
                  config = {
                    default_run = 1.0,
                  },
-                 start = true
+                 start = false
                }
 )
 -- If you don’t want to use FadeLogo, you can have a regular notification.

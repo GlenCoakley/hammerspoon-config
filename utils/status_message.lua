@@ -12,7 +12,7 @@ statusmessage.new = function(messageText)
     local frame = screen.primaryScreen():frame()
 
     local styledTextAttributes = {
-      font = { name = 'Monaco', size = 24 },
+      font = { name = 'Monaco', size = 20 },
     }
 
     local styledText = styledtext.new('🔨 ' .. messageText, styledTextAttributes)
@@ -40,8 +40,9 @@ statusmessage.new = function(messageText)
     return background, text
   end
 
-  return {
+  local obj = {
     _buildParts = buildParts,
+	
     show = function(self)
       self:hide()
 
@@ -49,22 +50,26 @@ statusmessage.new = function(messageText)
       self.background:show()
       self.text:show()
     end,
+	
     hide = function(self)
-      if self.background then
-        self.background:delete()
-        self.background = nil
-      end
       if self.text then
         self.text:delete()
         self.text = nil
       end
+      if self.background then
+        self.background:delete()
+        self.background = nil
+      end
     end,
+	
     notify = function(self, seconds)
       local seconds = seconds or 1
-      self:show()
-      hs.timer.delayed.new(seconds, function() self:hide() end):start()
+	  self:show()
+	  --hs.timer.delayed.new(0, function() self:show() end):start()
+	  hs.timer.delayed.new(seconds, function() self:hide() end):start()
     end
   }
+  return obj
 end
 
 return statusmessage

@@ -77,7 +77,7 @@ obj.use_frame_correctness = false
 --- WindowHalfsAndThirds.clear_cache_after_seconds
 --- Variable
 --- We don't want our undo frame cache filling all available memory. Let's clear it after it hasn't been used for a while.
-obj.clear_cache_after_seconds = 60
+obj.clear_cache_after_seconds = 67
 
 -- Internal terminology:
 -- `actions` are the things hotkeys are bound to and express a user desire (eg. `third_left`: move a third further left
@@ -92,17 +92,17 @@ obj.clear_cache_after_seconds = 60
 -- `window_state_rects` are `{x,y,w,l}` `hs.geometry.unitrect` tables defining those states
 obj._window_state_name_to_rect = {
    left_half      = {0.00,0.00,0.50,1.00}, -- two decimal places required for `window_state_rect_strings` to match
-   left_40        = {0.00,0.00,0.40,1.00},
-   left_60        = {0.00,0.00,0.60,1.00},
+   left_33        = {0.00,0.00,0.33,1.00},
+   left_67        = {0.00,0.00,0.67,1.00},
    right_half     = {0.50,0.00,0.50,1.00},
-   right_40       = {0.60,0.00,0.40,1.00},
-   right_60       = {0.40,0.00,0.60,1.00},
+   right_33       = {0.67,0.00,0.33,1.00},
+   right_67       = {0.33,0.00,0.67,1.00},
    top_half       = {0.00,0.00,1.00,0.50},
-   top_40         = {0.00,0.00,1.00,0.40},
-   top_60         = {0.00,0.00,1.00,0.60},
+   top_33         = {0.00,0.00,1.00,0.33},
+   top_67         = {0.00,0.00,1.00,0.67},
    bottom_half    = {0.00,0.50,1.00,0.50},
-   bottom_40      = {0.00,0.60,1.00,0.40},
-   bottom_60      = {0.00,0.40,1.00,0.60},
+   bottom_33      = {0.00,0.67,1.00,0.33},
+   bottom_67      = {0.00,0.33,1.00,0.67},
    left_third     = {0.00,0.00,0.33,1.00},
    middle_third_h = {0.33,0.00,0.33,1.00},
    right_third    = {0.67,0.00,0.33,1.00},
@@ -129,15 +129,15 @@ end
 --   or the default `window_state_name` the current `window_state_name` isn't a key for that `action`
 --   (example below)
 obj._window_moves = {
-   left_half = {"left_half", left_half = "left_40", left_40 = "left_60"},
+   left_half = {"left_half", left_half = "left_67", left_33 = "left_33"},
    -- if `action` `left_half` is requested without a match in this table, move to `left_half`
-   -- if `action` `left_half` is requested from `window_state_name` `left_half`, move to `left_40`
-   -- if `action` `left_half` is requested from `window_state_name` `left_40`, move to `left_60`
+   -- if `action` `left_half` is requested from `window_state_name` `left_half`, move to `left_67`
+   -- if `action` `left_half` is requested from `window_state_name` `left_67`, move to `left_33`
    -- rationale: if a user requests a move to `left_half` and they're already there they're expressing a user need
    --   and it's our job to work out what that need is. Let's give them some other `left_half`ish options.
-   right_half = {"right_half", right_half = "right_40", right_40 = "right_60"},
-   top_half = {"top_half", top_half = "top_40", top_40 = "top_60"},
-   bottom_half = {"bottom_half", bottom_half = "bottom_40", bottom_40 = "bottom_60"},
+   right_half = {"right_half", right_half = "right_67", right_67 = "right_33"},
+   top_half = {"top_half", top_half = "top_67", top_67 = "top_33"},
+   bottom_half = {"bottom_half", bottom_half = "bottom_67", bottom_67 = "bottom_33"},
    third_left = {"left_third", left_third = "right_third", middle_third_h = "left_third", right_third = "middle_third_h",
                                right_half = "middle_third_h"},
    third_right = {"right_third", left_third = "middle_third_h", middle_third_h = "right_third", right_third = "left_third",
@@ -280,6 +280,14 @@ obj.thirdDown      = hs.fnutils.partial(obj.resizeCurrentWindow, "third_down")
 obj.topThird       = hs.fnutils.partial(obj.resizeCurrentWindow, "top_third")
 obj.middleThirdV   = hs.fnutils.partial(obj.resizeCurrentWindow, "middle_third_v")
 obj.bottomThird    = hs.fnutils.partial(obj.resizeCurrentWindow, "bottom_third")
+obj.left67         = hs.fnutils.partial(obj.resizeCurrentWindow, "left_67")
+obj.right67        = hs.fnutils.partial(obj.resizeCurrentWindow, "right_67")
+obj.top67          = hs.fnutils.partial(obj.resizeCurrentWindow, "top_67")
+obj.bottom67       = hs.fnutils.partial(obj.resizeCurrentWindow, "bottom_67")
+obj.left33         = hs.fnutils.partial(obj.resizeCurrentWindow, "left_33")
+obj.right33        = hs.fnutils.partial(obj.resizeCurrentWindow, "right_33")
+obj.top33          = hs.fnutils.partial(obj.resizeCurrentWindow, "top_33")
+obj.bottom33       = hs.fnutils.partial(obj.resizeCurrentWindow, "bottom_33")
 obj.topLeft        = hs.fnutils.partial(obj.resizeCurrentWindow, "top_left")
 obj.topRight       = hs.fnutils.partial(obj.resizeCurrentWindow, "top_right")
 obj.bottomLeft     = hs.fnutils.partial(obj.resizeCurrentWindow, "bottom_left")
@@ -357,10 +365,13 @@ function obj.larger(win)
       cacheWindow(win, nil)
       local cw = current_window_rect(win)
       local move_to_rect = {}
-      move_to_rect[1] = math.max(cw[1]-0.02,0)
-      move_to_rect[2] = math.max(cw[2]-0.02,0)
-      move_to_rect[3] = math.min(cw[3]+0.04,1 - move_to_rect[1])
-      move_to_rect[4] = math.min(cw[4]+0.04,1 - move_to_rect[2])
+	  local horDelta = math.min(cw[3] * 0.05, 25)
+	  local vertDelta = math.min(cw[4] * 0.05, 25)
+      move_to_rect[1] = math.max (cw[1] - horDelta, 0)
+      move_to_rect[2] = math.max (cw[2] - vertDelta, 0)
+	  -- 0.99 because some windows (MacVim) don't size to 1.
+      move_to_rect[3] = math.min (cw[3] + horDelta, 0.99 - move_to_rect[1])
+      move_to_rect[4] = math.min (cw[4] + vertDelta, 0.99 - move_to_rect[2])
       win:move(move_to_rect)
    end
    return obj
@@ -380,12 +391,21 @@ function obj.smaller(win)
    if win then
       cacheWindow(win, nil)
       local cw = current_window_rect(win)
-      local move_to_rect = {}
-      move_to_rect[3] = math.max(cw[3]-0.04,0.1)
-      move_to_rect[4] = cw[4] > 0.95 and 1 or math.max(cw[4]-0.04,0.1) -- some windows (MacVim) don't size to 1
-      move_to_rect[1] = math.min(cw[1]+0.02,1 - move_to_rect[3])
-      move_to_rect[2] = cw[2] == 0 and 0 or math.min(cw[2]+0.02,1 - move_to_rect[4])
-      win:move(move_to_rect)
+      local move_to_rect = {cw[1], cw[2], cw[3], cw[4]}
+	  local horDelta = math.min(cw[3] * 0.05, 25)
+	  local vertDelta = math.min(cw[4] * 0.05, 25)
+      move_to_rect[3] = math.max (cw[3] - horDelta, horDelta)
+      move_to_rect[4] = -- some windows (MacVim) don't size to 1
+	  					math.max (cw[4] - vertDelta, vertDelta)
+	  win:move(move_to_rect)
+	  -- Check to see if the window shrunk. If not, then don't move it.
+      local nw = current_window_rect(win)
+      if nw[3] ~= cw[3] and nw[4] ~= cw[4] then
+		  move_to_rect[1] = math.min (cw[1] + horDelta, 1 - move_to_rect[3])
+		  move_to_rect[2] = cw[2] == 0 and 0 or 
+	  						math.min (cw[2] + vertDelta, 1 - move_to_rect[4])
+		  win:move(move_to_rect)
+	  end
    end
    return obj
 end
@@ -429,6 +449,14 @@ function obj:bindHotkeys(mapping)
       top_third = self.topThird,
       middle_third_v = self.middleThirdV,
       bottom_third = self.bottomThird,
+      left_67 = self.left67,
+      right_67 = self.right67,
+      top_67 = self.top67,
+      bottom_67 = self.bottom67,
+      left_33 = self.left33,
+      right_33 = self.right33,
+      top_33 = self.top33,
+      bottom_33 = self.bottom33,
       top_left = self.topLeft,
       top_right = self.topRight,
       bottom_left = self.bottomLeft,

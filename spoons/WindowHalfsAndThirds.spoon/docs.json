@@ -13,10 +13,10 @@
       {
         "doc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
         "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
+        "def" : "WindowHalfsAndThirds.logger",
         "stripped_doc" : [
           "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
         ],
-        "def" : "WindowHalfsAndThirds.logger",
         "notes" : [
 
         ],
@@ -33,6 +33,7 @@
       {
         "doc" : "Table containing a sample set of hotkeys that can be\nassigned to the different operations. These are not bound\nby default - if you want to use them you have to call:\n`spoon.WindowHalfsAndThirds:bindHotkeys(spoon.WindowHalfsAndThirds.defaultHotkeys)`\nafter loading the spoon. Value:\n```\n {\n    left_half   = { {\"ctrl\",        \"cmd\"}, \"Left\" },\n    right_half  = { {\"ctrl\",        \"cmd\"}, \"Right\" },\n    top_half    = { {\"ctrl\",        \"cmd\"}, \"Up\" },\n    bottom_half = { {\"ctrl\",        \"cmd\"}, \"Down\" },\n    third_left  = { {\"ctrl\", \"alt\"       }, \"Left\" },\n    third_right = { {\"ctrl\", \"alt\"       }, \"Right\" },\n    third_up    = { {\"ctrl\", \"alt\"       }, \"Up\" },\n    third_down  = { {\"ctrl\", \"alt\"       }, \"Down\" },\n    top_left    = { {\"ctrl\",        \"cmd\"}, \"1\" },\n    top_right   = { {\"ctrl\",        \"cmd\"}, \"2\" },\n    bottom_left = { {\"ctrl\",        \"cmd\"}, \"3\" },\n    bottom_right= { {\"ctrl\",        \"cmd\"}, \"4\" },\n    max_toggle  = { {\"ctrl\", \"alt\", \"cmd\"}, \"f\" },\n    max         = { {\"ctrl\", \"alt\", \"cmd\"}, \"Up\" },\n    undo        = { {        \"alt\", \"cmd\"}, \"z\" },\n    center      = { {        \"alt\", \"cmd\"}, \"c\" },\n    larger      = { {        \"alt\", \"cmd\", \"shift\"}, \"Right\" },\n    smaller     = { {        \"alt\", \"cmd\", \"shift\"}, \"Left\" },\n }\n```",
         "desc" : "Table containing a sample set of hotkeys that can be",
+        "def" : "WindowHalfsAndThirds.defaultHotkeys",
         "stripped_doc" : [
           "Table containing a sample set of hotkeys that can be",
           "assigned to the different operations. These are not bound",
@@ -62,7 +63,6 @@
           " }",
           "```"
         ],
-        "def" : "WindowHalfsAndThirds.defaultHotkeys",
         "notes" : [
 
         ],
@@ -79,10 +79,10 @@
       {
         "doc" : "If `true`, set [setFrameCorrectness](http:\/\/www.hammerspoon.org\/docs\/hs.window.html#setFrameCorrectness) for some resizing operations which fail when the window extends beyonds screen boundaries. This may cause some jerkiness in the resizing, so experiment and determine if you need it. Defaults to `false`",
         "desc" : "If `true`, set [setFrameCorrectness](http:\/\/www.hammerspoon.org\/docs\/hs.window.html#setFrameCorrectness) for some resizing operations which fail when the window extends beyonds screen boundaries. This may cause some jerkiness in the resizing, so experiment and determine if you need it. Defaults to `false`",
+        "def" : "WindowHalfsAndThirds.use_frame_correctness",
         "stripped_doc" : [
           "If `true`, set [setFrameCorrectness](http:\/\/www.hammerspoon.org\/docs\/hs.window.html#setFrameCorrectness) for some resizing operations which fail when the window extends beyonds screen boundaries. This may cause some jerkiness in the resizing, so experiment and determine if you need it. Defaults to `false`"
         ],
-        "def" : "WindowHalfsAndThirds.use_frame_correctness",
         "notes" : [
 
         ],
@@ -99,10 +99,10 @@
       {
         "doc" : "We don't want our undo frame cache filling all available memory. Let's clear it after it hasn't been used for a while.",
         "desc" : "We don't want our undo frame cache filling all available memory. Let's clear it after it hasn't been used for a while.",
+        "def" : "WindowHalfsAndThirds.clear_cache_after_seconds",
         "stripped_doc" : [
           "We don't want our undo frame cache filling all available memory. Let's clear it after it hasn't been used for a while."
         ],
-        "def" : "WindowHalfsAndThirds.clear_cache_after_seconds",
         "notes" : [
 
         ],
@@ -120,19 +120,22 @@
     "stripped_doc" : [
 
     ],
-    "type" : "Module",
-    "desc" : "Simple window movement and resizing, focusing on half- and third-of-screen sizes",
     "Deprecated" : [
 
     ],
+    "type" : "Module",
+    "desc" : "Simple window movement and resizing, focusing on half- and third-of-screen sizes",
     "Constructor" : [
 
     ],
-    "doc" : "Simple window movement and resizing, focusing on half- and third-of-screen sizes\n\nDownload: [https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/WindowHalfsAndThirds.spoon.zip](https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/WindowHalfsAndThirds.spoon.zip)",
+    "Field" : [
+
+    ],
     "Method" : [
       {
         "doc" : "Resize to the left half of the screen.\nAlso various other action methods. See WindowHalfsAndThirds:bindHotkeys for details\n  .leftHalf .rightHalf .topHalf .bottomHalf .thirdLeft .thirdRight .leftThird .middleThirdH .rightThird\n  .thirdUp .thirdDown .topThird .middleThirdV .bottomThird .topLeft .topRight .bottomLeft .bottomRight\n  .maximize\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Resize to the left half of the screen.",
+        "def" : "WindowHalfsAndThirds:leftHalf(win)",
         "stripped_doc" : [
           "Resize to the left half of the screen.",
           "Also various other action methods. See WindowHalfsAndThirds:bindHotkeys for details",
@@ -141,7 +144,6 @@
           "  .maximize",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:leftHalf(win)",
         "notes" : [
 
         ],
@@ -159,11 +161,11 @@
       {
         "doc" : "Toggle win between its normal size, and being maximized\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Toggle win between its normal size, and being maximized",
+        "def" : "WindowHalfsAndThirds:toggleMaximized(win)",
         "stripped_doc" : [
           "Toggle win between its normal size, and being maximized",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:toggleMaximized(win)",
         "notes" : [
 
         ],
@@ -181,11 +183,11 @@
       {
         "doc" : "Undo window size changes for win if there've been any in WindowHalfsAndThirds.clear_cache_after_seconds\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Undo window size changes for win if there've been any in WindowHalfsAndThirds.clear_cache_after_seconds",
+        "def" : "WindowHalfsAndThirds:undo(win)",
         "stripped_doc" : [
           "Undo window size changes for win if there've been any in WindowHalfsAndThirds.clear_cache_after_seconds",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:undo(win)",
         "notes" : [
 
         ],
@@ -203,11 +205,11 @@
       {
         "doc" : "Center window on screen\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Center window on screen",
+        "def" : "WindowHalfsAndThirds:center(win)",
         "stripped_doc" : [
           "Center window on screen",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:center(win)",
         "notes" : [
 
         ],
@@ -225,11 +227,11 @@
       {
         "doc" : "Make win larger than its current size\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Make win larger than its current size",
+        "def" : "WindowHalfsAndThirds:larger(win)",
         "stripped_doc" : [
           "Make win larger than its current size",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:larger(win)",
         "notes" : [
 
         ],
@@ -247,11 +249,11 @@
       {
         "doc" : "Make win smaller than its current size\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Make win smaller than its current size",
+        "def" : "WindowHalfsAndThirds:smaller(win)",
         "stripped_doc" : [
           "Make win smaller than its current size",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:smaller(win)",
         "notes" : [
 
         ],
@@ -269,11 +271,11 @@
       {
         "doc" : "Binds hotkeys for WindowHalfsAndThirds\n\nParameters:\n * mapping - A table containing hotkey objifier\/key details for the following items:\n  * left_half, right_half, top_half, bottom_half - resize to the corresponding half of the screen\n  * third_left, third_right - resize to one horizontal-third of the screen and move left\/right\n  * third_up, third_down - resize to one vertical-third of the screen and move up\/down\n  * max - maximize the window\n  * max_toggle - toggle maximization\n  * left_third, middle_third_h, right_third - resize and move the window to the corresponding horizontal third of the screen\n  * top_third, middle_third_v, bottom_third - resize and move the window to the corresponding vertical third of the screen\n  * top_left, top_right, bottom_left, bottom_right - resize and move the window to the corresponding quarter of the screen\n  * undo - restore window to position before last move\n  * center - move window to center of screen\n  * larger - grow window larger than its current size\n  * smaller - shrink window smaller than its current size\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Binds hotkeys for WindowHalfsAndThirds",
+        "def" : "WindowHalfsAndThirds:bindHotkeys(mapping)",
         "stripped_doc" : [
           "Binds hotkeys for WindowHalfsAndThirds",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:bindHotkeys(mapping)",
         "notes" : [
 
         ],
@@ -301,14 +303,17 @@
         ]
       }
     ],
+    "Command" : [
+
+    ],
     "items" : [
       {
         "doc" : "We don't want our undo frame cache filling all available memory. Let's clear it after it hasn't been used for a while.",
         "desc" : "We don't want our undo frame cache filling all available memory. Let's clear it after it hasn't been used for a while.",
+        "def" : "WindowHalfsAndThirds.clear_cache_after_seconds",
         "stripped_doc" : [
           "We don't want our undo frame cache filling all available memory. Let's clear it after it hasn't been used for a while."
         ],
-        "def" : "WindowHalfsAndThirds.clear_cache_after_seconds",
         "notes" : [
 
         ],
@@ -325,6 +330,7 @@
       {
         "doc" : "Table containing a sample set of hotkeys that can be\nassigned to the different operations. These are not bound\nby default - if you want to use them you have to call:\n`spoon.WindowHalfsAndThirds:bindHotkeys(spoon.WindowHalfsAndThirds.defaultHotkeys)`\nafter loading the spoon. Value:\n```\n {\n    left_half   = { {\"ctrl\",        \"cmd\"}, \"Left\" },\n    right_half  = { {\"ctrl\",        \"cmd\"}, \"Right\" },\n    top_half    = { {\"ctrl\",        \"cmd\"}, \"Up\" },\n    bottom_half = { {\"ctrl\",        \"cmd\"}, \"Down\" },\n    third_left  = { {\"ctrl\", \"alt\"       }, \"Left\" },\n    third_right = { {\"ctrl\", \"alt\"       }, \"Right\" },\n    third_up    = { {\"ctrl\", \"alt\"       }, \"Up\" },\n    third_down  = { {\"ctrl\", \"alt\"       }, \"Down\" },\n    top_left    = { {\"ctrl\",        \"cmd\"}, \"1\" },\n    top_right   = { {\"ctrl\",        \"cmd\"}, \"2\" },\n    bottom_left = { {\"ctrl\",        \"cmd\"}, \"3\" },\n    bottom_right= { {\"ctrl\",        \"cmd\"}, \"4\" },\n    max_toggle  = { {\"ctrl\", \"alt\", \"cmd\"}, \"f\" },\n    max         = { {\"ctrl\", \"alt\", \"cmd\"}, \"Up\" },\n    undo        = { {        \"alt\", \"cmd\"}, \"z\" },\n    center      = { {        \"alt\", \"cmd\"}, \"c\" },\n    larger      = { {        \"alt\", \"cmd\", \"shift\"}, \"Right\" },\n    smaller     = { {        \"alt\", \"cmd\", \"shift\"}, \"Left\" },\n }\n```",
         "desc" : "Table containing a sample set of hotkeys that can be",
+        "def" : "WindowHalfsAndThirds.defaultHotkeys",
         "stripped_doc" : [
           "Table containing a sample set of hotkeys that can be",
           "assigned to the different operations. These are not bound",
@@ -354,7 +360,6 @@
           " }",
           "```"
         ],
-        "def" : "WindowHalfsAndThirds.defaultHotkeys",
         "notes" : [
 
         ],
@@ -371,10 +376,10 @@
       {
         "doc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
         "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
+        "def" : "WindowHalfsAndThirds.logger",
         "stripped_doc" : [
           "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
         ],
-        "def" : "WindowHalfsAndThirds.logger",
         "notes" : [
 
         ],
@@ -391,10 +396,10 @@
       {
         "doc" : "If `true`, set [setFrameCorrectness](http:\/\/www.hammerspoon.org\/docs\/hs.window.html#setFrameCorrectness) for some resizing operations which fail when the window extends beyonds screen boundaries. This may cause some jerkiness in the resizing, so experiment and determine if you need it. Defaults to `false`",
         "desc" : "If `true`, set [setFrameCorrectness](http:\/\/www.hammerspoon.org\/docs\/hs.window.html#setFrameCorrectness) for some resizing operations which fail when the window extends beyonds screen boundaries. This may cause some jerkiness in the resizing, so experiment and determine if you need it. Defaults to `false`",
+        "def" : "WindowHalfsAndThirds.use_frame_correctness",
         "stripped_doc" : [
           "If `true`, set [setFrameCorrectness](http:\/\/www.hammerspoon.org\/docs\/hs.window.html#setFrameCorrectness) for some resizing operations which fail when the window extends beyonds screen boundaries. This may cause some jerkiness in the resizing, so experiment and determine if you need it. Defaults to `false`"
         ],
-        "def" : "WindowHalfsAndThirds.use_frame_correctness",
         "notes" : [
 
         ],
@@ -411,11 +416,11 @@
       {
         "doc" : "Binds hotkeys for WindowHalfsAndThirds\n\nParameters:\n * mapping - A table containing hotkey objifier\/key details for the following items:\n  * left_half, right_half, top_half, bottom_half - resize to the corresponding half of the screen\n  * third_left, third_right - resize to one horizontal-third of the screen and move left\/right\n  * third_up, third_down - resize to one vertical-third of the screen and move up\/down\n  * max - maximize the window\n  * max_toggle - toggle maximization\n  * left_third, middle_third_h, right_third - resize and move the window to the corresponding horizontal third of the screen\n  * top_third, middle_third_v, bottom_third - resize and move the window to the corresponding vertical third of the screen\n  * top_left, top_right, bottom_left, bottom_right - resize and move the window to the corresponding quarter of the screen\n  * undo - restore window to position before last move\n  * center - move window to center of screen\n  * larger - grow window larger than its current size\n  * smaller - shrink window smaller than its current size\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Binds hotkeys for WindowHalfsAndThirds",
+        "def" : "WindowHalfsAndThirds:bindHotkeys(mapping)",
         "stripped_doc" : [
           "Binds hotkeys for WindowHalfsAndThirds",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:bindHotkeys(mapping)",
         "notes" : [
 
         ],
@@ -445,11 +450,11 @@
       {
         "doc" : "Center window on screen\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Center window on screen",
+        "def" : "WindowHalfsAndThirds:center(win)",
         "stripped_doc" : [
           "Center window on screen",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:center(win)",
         "notes" : [
 
         ],
@@ -467,11 +472,11 @@
       {
         "doc" : "Make win larger than its current size\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Make win larger than its current size",
+        "def" : "WindowHalfsAndThirds:larger(win)",
         "stripped_doc" : [
           "Make win larger than its current size",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:larger(win)",
         "notes" : [
 
         ],
@@ -489,6 +494,7 @@
       {
         "doc" : "Resize to the left half of the screen.\nAlso various other action methods. See WindowHalfsAndThirds:bindHotkeys for details\n  .leftHalf .rightHalf .topHalf .bottomHalf .thirdLeft .thirdRight .leftThird .middleThirdH .rightThird\n  .thirdUp .thirdDown .topThird .middleThirdV .bottomThird .topLeft .topRight .bottomLeft .bottomRight\n  .maximize\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Resize to the left half of the screen.",
+        "def" : "WindowHalfsAndThirds:leftHalf(win)",
         "stripped_doc" : [
           "Resize to the left half of the screen.",
           "Also various other action methods. See WindowHalfsAndThirds:bindHotkeys for details",
@@ -497,7 +503,6 @@
           "  .maximize",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:leftHalf(win)",
         "notes" : [
 
         ],
@@ -515,11 +520,11 @@
       {
         "doc" : "Make win smaller than its current size\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Make win smaller than its current size",
+        "def" : "WindowHalfsAndThirds:smaller(win)",
         "stripped_doc" : [
           "Make win smaller than its current size",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:smaller(win)",
         "notes" : [
 
         ],
@@ -537,11 +542,11 @@
       {
         "doc" : "Toggle win between its normal size, and being maximized\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Toggle win between its normal size, and being maximized",
+        "def" : "WindowHalfsAndThirds:toggleMaximized(win)",
         "stripped_doc" : [
           "Toggle win between its normal size, and being maximized",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:toggleMaximized(win)",
         "notes" : [
 
         ],
@@ -559,11 +564,11 @@
       {
         "doc" : "Undo window size changes for win if there've been any in WindowHalfsAndThirds.clear_cache_after_seconds\n\nParameters:\n * win - hs.window to use, defaults to hs.window.focusedWindow()\n\nReturns:\n * the WindowHalfsAndThirds object",
         "desc" : "Undo window size changes for win if there've been any in WindowHalfsAndThirds.clear_cache_after_seconds",
+        "def" : "WindowHalfsAndThirds:undo(win)",
         "stripped_doc" : [
           "Undo window size changes for win if there've been any in WindowHalfsAndThirds.clear_cache_after_seconds",
           ""
         ],
-        "def" : "WindowHalfsAndThirds:undo(win)",
         "notes" : [
 
         ],
@@ -579,12 +584,7 @@
         ]
       }
     ],
-    "Command" : [
-
-    ],
-    "Field" : [
-
-    ],
+    "doc" : "Simple window movement and resizing, focusing on half- and third-of-screen sizes\n\nDownload: [https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/WindowHalfsAndThirds.spoon.zip](https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/WindowHalfsAndThirds.spoon.zip)",
     "name" : "WindowHalfsAndThirds"
   }
 ]

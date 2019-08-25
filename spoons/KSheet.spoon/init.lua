@@ -4,7 +4,9 @@
 ---
 --- Download: [https://github.com/Hammerspoon/Spoons/raw/master/Spoons/KSheet.spoon.zip](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/KSheet.spoon.zip)
 
-local obj={}
+local StatusMessage = import('utils/status_message')
+
+local obj = {}
 obj.__index = obj
 
 -- Metadata
@@ -31,6 +33,8 @@ function obj:init()
     self.sheetView:allowGestures(true)
     self.sheetView:allowNewWindows(false)
     self.sheetView:level(hs.drawing.windowLevels.modalPanel)
+
+	self.loadingTextStatusMsg = StatusMessage.new('Generating hotkey list...')
 end
 
 local function processMenuItems(menustru)
@@ -76,12 +80,12 @@ local function generateHtml(application)
             html, body{
               background-color:#eee;
               font-family: arial;
-              font-size: 13px;
+              font-size: 1.5em;
             }
             a{
               text-decoration:none;
               color:#000;
-              font-size:12px;
+              font-size: 1.5em;
             }
             li.title{ text-align:center;}
             ul, li{list-style: inside none; padding: 0 0 5px;}
@@ -188,16 +192,19 @@ end
 ---
 
 function obj:show()
+	self.loadingTextStatusMsg:hide()
+	
     local capp = hs.application.frontmostApplication()
     local cscreen = hs.screen.mainScreen()
     local cres = cscreen:fullFrame()
-    self.sheetView:frame({
-        x = cres.x+cres.w*0.15/2,
-        y = cres.y+cres.h*0.25/2,
-        w = cres.w*0.85,
-        h = cres.h*0.75
-    })
     local webcontent = generateHtml(capp)
+	
+    self.sheetView:frame({
+        x = cres.x + cres.w * 0.15 / 2,
+        y = cres.y + cres.h * 0.25 / 2,
+        w = cres.w * 0.85,
+        h = cres.h * 0.75
+    })
     self.sheetView:html(webcontent)
     self.sheetView:show()
 end
@@ -208,7 +215,31 @@ end
 ---
 
 function obj:hide()
+	self.loadingTextStatusMsg:hide()
     self.sheetView:hide()
+end
+
+--- KSheet:hide()
+--- Method
+--- Toggle hiding and showting the cheatsheet webview.
+---
+
+function obj:toggle()
+  if self.sheetView and self.sheetView:hswindow() and self.sheetView:hswindow():isVisible() then
+    self:hide()
+  else
+	self.loadingTextStatusMsg:notify(10)
+    self:show()
+  end
+end
+
+function obj:bindHotkeys(mapping)
+  local actions = {
+    toggle = hs.fnutils.partial(self.toggle, self),
+    show = hs.fnutils.partial(self.show, self),
+    hide = hs.fnutils.partial(self.hide, self)
+  }
+  hs.spoons.bindHotkeysToSpec(actions, mapping)
 end
 
 return obj
