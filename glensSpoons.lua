@@ -13,7 +13,6 @@ Install.use_syncinstall = true
 
 windowChord = {"ctrl", "alt", "cmd"}
 
-
 -- ########## Window and screen manipulation ##########
 
 -- Could also just use the build-in 'layout' and/or 'grid' with their snap-to sizing, nudging, shrinking and expanding: https://www.hammerspoon.org/docs/hs.grid.html#setGrid

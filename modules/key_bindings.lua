@@ -34,25 +34,37 @@ end)
 -- end)
 
 
-hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'd', function()
-	hs.eventtap.keyStrokes('datarecognition')
-end)
-hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'c', function()
-	hs.eventtap.keyStrokes('datarecognitioncorp.com')
-end)
-hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'g', function()
-	hs.eventtap.keyStrokes('gcoakley@datarecognitioncorp.com')
-end)
-
 function trimWhitespaceFromBoth(s)
    return s:match "^%s*(.-)%s*$"
 end
+function noop() end
+-- Credit: https://tayloraburgess.com/blog/2017-04-22-macos-vi/
+function fastKeyStroke (modifiers, character)
+  local event = require("hs.eventtap").event
+  event.newKeyEvent(modifiers, string.lower(character), true):post()
+  event.newKeyEvent(modifiers, string.lower(character), false):post()
+end
+function fastType (text)
+  text:gsub(".", function(c)
+    fastKeyStroke({}, c)
+  end)
+end
+
+hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'd', function()
+	fastType('datarecognition')
+end)
+hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'c', function()
+	fastType('datarecognitioncorp.com')
+end)
+hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'g', function()
+	ffastType('gcoakley@datarecognitioncorp.com')
+end)
 
 hs.hotkey.bind({'alt', 'cmd', 'shift'}, 'p', function()
 	local FileUtil = import('utils/file_util')
 	local wnpw = FileUtil.readWholeFile('/Users/glencoakley/.ssh/wnpw.b64')
 	log.d('Read from file ->', wnpw)
-	wnpw = hs.base64.decode(trimWhitespaceFromBoth(wnpw))
+	wnpw = hs.base64.decode(wnpw)
 	log.d('Decoded ->', wnpw)
 	hs.eventtap.keyStrokes(wnpw)
 end)
