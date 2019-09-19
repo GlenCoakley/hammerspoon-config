@@ -12,11 +12,13 @@
     "Variable" : [
       {
         "doc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
-        "name" : "logger",
         "stripped_doc" : [
           "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
         ],
-        "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
+        "name" : "logger",
+        "parameters" : [
+
+        ],
         "notes" : [
 
         ],
@@ -26,13 +28,10 @@
 
         ],
         "def" : "WindowScreenLeftAndRight.logger",
-        "parameters" : [
-
-        ]
+        "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
       },
       {
         "doc" : "Table containing a sample set of hotkeys that can be\nassigned to the different operations. These are not bound\nby default - if you want to use them you have to call:\n`spoon.WindowScreenLeftAndRight:bindHotkeys(spoon.WindowScreenLeftAndRight.defaultHotkeys)`\nafter loading the spoon. Value:\n```\n {\n    screen_left = { {\"ctrl\", \"alt\", \"cmd\"}, \"Left\" },\n    screen_right= { {\"ctrl\", \"alt\", \"cmd\"}, \"Right\" },\n }\n```",
-        "name" : "defaultHotkeys",
         "stripped_doc" : [
           "Table containing a sample set of hotkeys that can be",
           "assigned to the different operations. These are not bound",
@@ -46,7 +45,10 @@
           " }",
           "```"
         ],
-        "desc" : "Table containing a sample set of hotkeys that can be",
+        "name" : "defaultHotkeys",
+        "parameters" : [
+
+        ],
         "notes" : [
 
         ],
@@ -56,27 +58,51 @@
 
         ],
         "def" : "WindowScreenLeftAndRight.defaultHotkeys",
-        "parameters" : [
-
-        ]
+        "desc" : "Table containing a sample set of hotkeys that can be"
       }
     ],
     "stripped_doc" : [
 
     ],
+    "desc" : "Move windows to other screens",
     "Deprecated" : [
 
     ],
     "type" : "Module",
-    "desc" : "Move windows to other screens",
     "Constructor" : [
 
     ],
     "doc" : "Move windows to other screens\n\nDownload: [https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/WindowScreenLeftAndRight.spoon.zip](https:\/\/github.com\/Hammerspoon\/Spoons\/raw\/master\/Spoons\/WindowScreenLeftAndRight.spoon.zip)",
+    "Method" : [
+      {
+        "doc" : "Binds hotkeys for WindowScreenLeftAndRight\n\nParameters:\n * mapping - A table containing hotkey objifier\/key details for the following items:\n  * screen_left, screen_right - move the window to the left\/right screen (if you have more than one monitor connected, does nothing otherwise)",
+        "stripped_doc" : [
+          "Binds hotkeys for WindowScreenLeftAndRight",
+          ""
+        ],
+        "name" : "bindHotkeys",
+        "parameters" : [
+          " * mapping - A table containing hotkey objifier\/key details for the following items:",
+          "  * screen_left, screen_right - move the window to the left\/right screen (if you have more than one monitor connected, does nothing otherwise)"
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "WindowScreenLeftAndRight:bindHotkeys(mapping)",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "def" : "WindowScreenLeftAndRight:bindHotkeys(mapping)",
+        "desc" : "Binds hotkeys for WindowScreenLeftAndRight"
+      }
+    ],
+    "Command" : [
+
+    ],
     "items" : [
       {
         "doc" : "Table containing a sample set of hotkeys that can be\nassigned to the different operations. These are not bound\nby default - if you want to use them you have to call:\n`spoon.WindowScreenLeftAndRight:bindHotkeys(spoon.WindowScreenLeftAndRight.defaultHotkeys)`\nafter loading the spoon. Value:\n```\n {\n    screen_left = { {\"ctrl\", \"alt\", \"cmd\"}, \"Left\" },\n    screen_right= { {\"ctrl\", \"alt\", \"cmd\"}, \"Right\" },\n }\n```",
-        "name" : "defaultHotkeys",
         "stripped_doc" : [
           "Table containing a sample set of hotkeys that can be",
           "assigned to the different operations. These are not bound",
@@ -90,7 +116,10 @@
           " }",
           "```"
         ],
-        "desc" : "Table containing a sample set of hotkeys that can be",
+        "name" : "defaultHotkeys",
+        "parameters" : [
+
+        ],
         "notes" : [
 
         ],
@@ -100,17 +129,17 @@
 
         ],
         "def" : "WindowScreenLeftAndRight.defaultHotkeys",
-        "parameters" : [
-
-        ]
+        "desc" : "Table containing a sample set of hotkeys that can be"
       },
       {
         "doc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
-        "name" : "logger",
         "stripped_doc" : [
           "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
         ],
-        "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.",
+        "name" : "logger",
+        "parameters" : [
+
+        ],
         "notes" : [
 
         ],
@@ -120,18 +149,19 @@
 
         ],
         "def" : "WindowScreenLeftAndRight.logger",
-        "parameters" : [
-
-        ]
+        "desc" : "Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon."
       },
       {
         "doc" : "Binds hotkeys for WindowScreenLeftAndRight\n\nParameters:\n * mapping - A table containing hotkey objifier\/key details for the following items:\n  * screen_left, screen_right - move the window to the left\/right screen (if you have more than one monitor connected, does nothing otherwise)",
-        "name" : "bindHotkeys",
         "stripped_doc" : [
           "Binds hotkeys for WindowScreenLeftAndRight",
           ""
         ],
-        "desc" : "Binds hotkeys for WindowScreenLeftAndRight",
+        "name" : "bindHotkeys",
+        "parameters" : [
+          " * mapping - A table containing hotkey objifier\/key details for the following items:",
+          "  * screen_left, screen_right - move the window to the left\/right screen (if you have more than one monitor connected, does nothing otherwise)"
+        ],
         "notes" : [
 
         ],
@@ -141,41 +171,11 @@
 
         ],
         "def" : "WindowScreenLeftAndRight:bindHotkeys(mapping)",
-        "parameters" : [
-          " * mapping - A table containing hotkey objifier\/key details for the following items:",
-          "  * screen_left, screen_right - move the window to the left\/right screen (if you have more than one monitor connected, does nothing otherwise)"
-        ]
+        "desc" : "Binds hotkeys for WindowScreenLeftAndRight"
       }
-    ],
-    "Command" : [
-
     ],
     "Field" : [
 
-    ],
-    "Method" : [
-      {
-        "doc" : "Binds hotkeys for WindowScreenLeftAndRight\n\nParameters:\n * mapping - A table containing hotkey objifier\/key details for the following items:\n  * screen_left, screen_right - move the window to the left\/right screen (if you have more than one monitor connected, does nothing otherwise)",
-        "name" : "bindHotkeys",
-        "stripped_doc" : [
-          "Binds hotkeys for WindowScreenLeftAndRight",
-          ""
-        ],
-        "desc" : "Binds hotkeys for WindowScreenLeftAndRight",
-        "notes" : [
-
-        ],
-        "signature" : "WindowScreenLeftAndRight:bindHotkeys(mapping)",
-        "type" : "Method",
-        "returns" : [
-
-        ],
-        "def" : "WindowScreenLeftAndRight:bindHotkeys(mapping)",
-        "parameters" : [
-          " * mapping - A table containing hotkey objifier\/key details for the following items:",
-          "  * screen_left, screen_right - move the window to the left\/right screen (if you have more than one monitor connected, does nothing otherwise)"
-        ]
-      }
     ],
     "name" : "WindowScreenLeftAndRight"
   }

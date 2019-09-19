@@ -60,6 +60,6 @@ import('glensSpoons')
 
 --spaces = require("hs._asm.undocumented.spaces")
 
---[[ print all key codes
+--[[ print all key codes mapped
 for key,value in pairs(require 'hs.keycodes'.map) do print(key,value) end
 --]]

@@ -11,7 +11,7 @@ config.modules = {
 	"arrangement",
     -- Handled by WindowHalfsAndThirds <- "arrows",
 	-- "auto_reload_hammerspoon",
-	"maximized",
+	-- "maximized",
 	"hwsw_changes", 
 	-- "hop",
 	"key_bindings",
